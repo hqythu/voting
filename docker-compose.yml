@@ -1,0 +1,18 @@
+version: '2'
+services:
+  scaffold:
+    build: .
+    links:
+      - database
+    depends_on:
+      - database
+    restart: always
+    ports:
+      - 80:80
+  database:
+    image: mysql:5.7
+    volumes:
+      - ./db:/var/lib/mysql/data
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    restart: always
