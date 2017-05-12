@@ -14,10 +14,9 @@ class Config(object):
     """
 
     SECRET_KEY = \
-        os.environ.get('SECRET_KEY', 'ngJ4FvdqjEm9cGLutoQMjsbEFbigcuVd')
+        os.environ.get('SECRET_KEY', 'c05PqTmSzeMopYazYBkJBzaAsEHEobi5')
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'mysql://root@localhost:3306'
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    REDIS_URL = "redis://cache:6379/0"
 
     @staticmethod
     def init_app(app):
@@ -36,7 +35,6 @@ class ProductionConfig(Config):
     Production config class, rewrite attribute of basic config.
     """
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = 'mysql://root@database:3306'
 
 
 configs = {

@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   scaffold:
     build: .
@@ -8,15 +8,15 @@ services:
     environment:
      - PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
      - FLASK_CONFIG=development
-    links:
-      - database
     depends_on:
-      - database
+      - redis
     ports:
       - 5000:5000
-  database:
-    image: mysql:5.7
+  redis:
+    image: redis:3.2.8
     volumes:
-      - ./db:/var/lib/mysql/data
-    environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - cache:/data
+
+volumes:
+  cache:
+    driver: local

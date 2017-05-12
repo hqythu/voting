@@ -1,0 +1,18 @@
+version: '3'
+services:
+  scaffold:
+    build: .
+    depends_on:
+      - redis
+    restart: always
+    ports:
+      - 80:80
+  redis:
+    image: redis:3.2.8
+    volumes:
+      - cache:/data
+    restart: always
+
+volumes:
+  cache:
+    driver: local

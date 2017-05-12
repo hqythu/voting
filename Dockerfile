@@ -1,4 +1,4 @@
-FROM python:3.6-onbuild
+FROM python:3.6.1-onbuild
 
 ENV FLASK_CONFIG=production
 

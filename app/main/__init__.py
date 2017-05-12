@@ -1,5 +1,5 @@
 from flask import Blueprint
-from modulefinder import importlib
+import importlib
 
 main_blueprint = Blueprint('main', __name__)
 
