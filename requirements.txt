@@ -10,6 +10,7 @@ click==6.7                # via flask, pip-tools
 first==2.0.1              # via pip-tools
 Flask-Redis==0.3.0
 Flask-Script==2.0.5
+Flask-WTF==0.14
 flask==0.12.1
 gunicorn==19.7.1
 itsdangerous==0.24        # via flask
@@ -20,3 +21,4 @@ pip-tools==1.8.0
 redis==2.10.5             # via flask-redis
 six==1.10.0               # via pip-tools
 werkzeug==0.12.1          # via flask
+WTForms==2.1              # via flask-wtf
