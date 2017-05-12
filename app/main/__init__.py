@@ -3,4 +3,4 @@ import importlib
 
 main_blueprint = Blueprint('main', __name__)
 
-importlib.import_module(f'{__name__}.handler')
+importlib.import_module(f'{__name__}.views')
