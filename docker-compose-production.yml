@@ -1,12 +1,15 @@
 version: '3'
 services:
-  scaffold:
+  app:
     build: .
+    command: python manage.py run_gunicorn
+    environment:
+      - FLASK_CONFIG=production
     depends_on:
       - redis
-    restart: always
     ports:
       - 80:80
+    restart: always
   redis:
     image: redis:3.2.8
     volumes:
