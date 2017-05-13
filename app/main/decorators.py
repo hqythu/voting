@@ -16,10 +16,10 @@ def time_limits(start_time, end_time,
             now = datetime.now(tz=timezone(timedelta(hours=8)))
             print(now, flush=True)
             if start_time is not None and now < start_time:
-                return render_template('result.html',
+                return render_template('message.html',
                                        message=start_time_message)
             if end_time is not None and now > end_time:
-                return render_template('result.html', message=end_time_message)
+                return render_template('message.html', message=end_time_message)
             return func(*args, **kwargs)
 
         return wrapper
