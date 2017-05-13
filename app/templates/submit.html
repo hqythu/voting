@@ -5,72 +5,69 @@
     <meta name="viewport" content="width=device-width">
     <title>投票</title>
 
-    <link rel="stylesheet"
-          href="https://unpkg.com/purecss@0.6.2/build/pure-min.css"
-          integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD"
-          crossorigin="anonymous">
     {#    <link rel="stylesheet"#}
-    {#          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"#}
-    {#          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"#}
+    {#          href="https://unpkg.com/purecss@0.6.2/build/pure-min.css"#}
+    {#          integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD"#}
+    {#          crossorigin="anonymous"><link rel="stylesheet"#}
+    {#          href="https://unpkg.com/purecss@0.6.2/build/pure-min.css"#}
+    {#          integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD"#}
     {#          crossorigin="anonymous">#}
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
 
     <link rel="stylesheet" href="/static/css/main.css">
 </head>
 <body>
 
-<div id="container">
-    <h1>Lab μ 2017年会长换届选举投票</h1>
-    <form class="pure-form pure-form-stacked" method="post" action="/">
-        <fieldset>
-            <label for="token">选择</label>
-
-            <label for="option-1" class="pure-radio">
-                <input id="option-1" type="radio" name="selection"
-                       value="option1">
-                Person1
-            </label>
-
-            <label for="option-2" class="pure-radio">
-                <input id="option-2" type="radio" name="selection"
-                       value="option2">
-                Person2
-            </label>
-
-            <label for="token">Token</label>
-            <input id="token" name="token">
-
-            <button type="submit" class="pure-button pure-button-primary">投票
-            </button>
-        </fieldset>
-    </form>
-</div>
-
-{#<div class="container">#}
+{#<div id="container">#}
 {#    <h1>Lab μ 2017年会长换届选举投票</h1>#}
-{#    <form method="post" action="/">#}
-{#        <div class="form-group">#}
-{#            <label>选择</label>#}
+{#    <form class="pure-form pure-form-stacked" method="post" action="/">#}
+{#        <fieldset>#}
+{#            <label for="token">选择</label>#}
 {##}
-{#            <div class="radio">#}
-{#                <label>#}
-{#                    <input type="radio" name="selection" value="option1">#}
-{#                    Person1#}
-{#                </label>#}
-{#            </div>#}
-{#            <div class="radio">#}
-{#                <label>#}
-{#                    <input type="radio" name="selection" value="option2">#}
-{#                    Person2#}
-{#                </label>#}
-{#            </div>#}
-{#        </div>#}
-{#        <div class="form-group">#}
-{#            <label>Token</label>#}
-{#            <input class="form-control" placeholder="Token">#}
-{#        </div>#}
-{#        <button type="submit" class="btn btn-default">提交</button>#}
+{#            <label for="option-1" class="pure-radio">#}
+{#                <input id="option-1" type="radio" name="selection"#}
+{#                       value="option1">#}
+{#                Person1#}
+{#            </label>#}
+{##}
+{#            <label for="option-2" class="pure-radio">#}
+{#                <input id="option-2" type="radio" name="selection"#}
+{#                       value="option2">#}
+{#                Person2#}
+{#            </label>#}
+{##}
+{#            <label for="token">Token</label>#}
+{#            <input id="token" name="token">#}
+{##}
+{#            <button type="submit"#}
+{#                    class="pure-button pure-button-primary">投票#}
+{#            </button>#}
+{#        </fieldset>#}
 {#    </form>#}
 {#</div>#}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <h1>Lab μ 2017年会长换届选举投票</h1>
+            <form method="post" action="/">
+                {{ form.csrf_token }}
+                <div class="form-group">
+                    {{ form.selection.label }}
+                    {{ form.selection(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    {{ form.token.label }}
+                    {{ form.token(class_='form-control', placeholder='Token') }}
+                </div>
+                <button type="submit" class="btn btn-default">提交</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
