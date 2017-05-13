@@ -14,10 +14,10 @@ from .decorators import time_limits
 
 
 @main_blueprint.route('/', methods=['GET', 'POST'])
-# @time_limits(start_time=None,
-#              end_time=datetime(year=2017, month=5, day=13, hour=15, minute=40,
-#                                tzinfo=timezone(timedelta(hours=8))),
-#              end_time_message='投票已经结束')
+@time_limits(start_time=None,
+             end_time=datetime(year=2017, month=5, day=14, hour=22, minute=00,
+                               tzinfo=timezone(timedelta(hours=8))),
+             end_time_message='投票已经结束')
 def index():
     form = VotingForm()
     if request.method == 'POST':
@@ -50,10 +50,10 @@ def voted():
 
 
 @main_blueprint.route('/result', methods=['GET'])
-# @time_limits(start_time=datetime(year=2017, month=5, day=14, hour=22, minute=00,
-#                                  tzinfo=timezone(timedelta(hours=8))),
-#              end_time=None,
-#              start_time_message='结果尚未公布')
+@time_limits(start_time=datetime(year=2017, month=5, day=14, hour=22, minute=00,
+                                 tzinfo=timezone(timedelta(hours=8))),
+             end_time=None,
+             start_time_message='结果尚未公布')
 def result():
     res = [(key, redis_store.get(key)) for key in current_app.candidates]
     print(res, flush=True)
