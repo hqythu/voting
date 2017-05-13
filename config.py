@@ -16,7 +16,7 @@ class Config(object):
     SECRET_KEY = \
         os.environ.get('SECRET_KEY', 'c05PqTmSzeMopYazYBkJBzaAsEHEobi5')
     DEBUG = True
-    REDIS_URL = "redis://cache:6379/0"
+    REDIS_URL = "redis://redis:6379/0"
 
     @staticmethod
     def init_app(app):
