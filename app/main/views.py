@@ -19,7 +19,7 @@ from .decorators import time_limits
                                tzinfo=timezone(timedelta(hours=8))),
              end_time_message='投票已经结束')
 def index():
-    form = VotingForm()
+    form = VotingForm(csrf_enabled=False)
     if request.method == 'POST':
         if form.validate_on_submit():
             if form.selection.data == '':
@@ -38,6 +38,7 @@ def index():
             redis_store.save()
             return render_template('message.html', message='提交成功')
         else:
+            print(form.errors, flush=True)
             return render_template('message.html', message='提交的表单填写有误')
     else:
         return render_template('submit.html', form=form)
