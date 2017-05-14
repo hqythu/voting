@@ -15,7 +15,7 @@ from .decorators import time_limits
 
 @main_blueprint.route('/', methods=['GET', 'POST'])
 @time_limits(start_time=None,
-             end_time=datetime(year=2017, month=5, day=14, hour=22, minute=00,
+             end_time=datetime(year=2017, month=5, day=14, hour=21, minute=00,
                                tzinfo=timezone(timedelta(hours=8))),
              end_time_message='投票已经结束')
 def index():
@@ -50,7 +50,7 @@ def voted():
 
 
 @main_blueprint.route('/result', methods=['GET'])
-@time_limits(start_time=datetime(year=2017, month=5, day=14, hour=22, minute=00,
+@time_limits(start_time=datetime(year=2017, month=5, day=14, hour=21, minute=00,
                                  tzinfo=timezone(timedelta(hours=8))),
              end_time=None,
              start_time_message='结果尚未公布')
